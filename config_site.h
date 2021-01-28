@@ -60,3 +60,4 @@
 
 #define PJ_CONFIG_IPHONE             1
 #define PJMEDIA_HAS_VIDEO            1
+#define PJMEDIA_HAS_VID_TOOLBOX_CODEC 1
