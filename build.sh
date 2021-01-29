@@ -8,7 +8,7 @@ if [ ! -d ${BUILD_DIR} ]; then
     mkdir ${BUILD_DIR}
 fi
 
-PJSIP_URL="http://www.pjsip.org/release/2.3/pjproject-2.3.tar.bz2"
+PJSIP_URL="https://github.com/pjsip/pjproject/archive/2.10.tar.gz"
 PJSIP_ARCHIVE=${BUILD_DIR}/`basename ${PJSIP_URL}`
 OPENSSL_URL="https://raw.githubusercontent.com/x2on/OpenSSL-for-iPhone/master/build-libssl.sh"
 OPENSSL_DIR=${BUILD_DIR}/openssl
