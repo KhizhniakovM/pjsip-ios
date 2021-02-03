@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "pjsip-ios"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "PJSIP for ios"
   s.description      = <<-DESC
                        Other pods for pjsip were just not in a stable state. So I am creating a new one.
@@ -22,7 +22,6 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, '6.0'
   s.requires_arc = false
-  s.dependency 'OpenSSL-Universal'
 
   s.public_header_files = 'Pod/pjsip-include/**'
   
@@ -38,7 +37,4 @@ Pod::Spec.new do |s|
     'GCC_PREPROCESSOR_DEFINITIONS' => 'PJ_AUTOCONF=1',
     'HEADER_SEARCH_PATHS'  => '$(inherited) $(PODS_ROOT)/pjsip-ios/Pod/pjsip-include'
   }
-
-  s.ios.pod_target_xcconfig  = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-  s.ios.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end

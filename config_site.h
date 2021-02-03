@@ -2,6 +2,8 @@
  * PJLIB settings.
  */
 
+#define PJ_IPHONE_OS_HAS_MULTITASKING_SUPPORT	0
+
 /* Both armv6 and armv7 has FP hardware support.
  * See https://trac.pjsip.org/repos/ticket/1589 for more info
  */
@@ -30,6 +32,10 @@
 /* Fine tune Speex's default settings for best performance/quality */
 #define PJMEDIA_CODEC_SPEEX_DEFAULT_QUALITY	5
 
+/* Video */
+#define PJMEDIA_HAS_VIDEO			1
+#define PJMEDIA_HAS_VID_TOOLBOX_CODEC 1
+
 /*
  * PJSIP settings.
  */
@@ -57,7 +63,3 @@
 #define PJSUA_MAX_RECORDERS			4
 #define PJSUA_MAX_CONF_PORTS		(PJSUA_MAX_CALLS+2*PJSUA_MAX_PLAYERS)
 #define PJSUA_MAX_BUDDIES			32
-
-#define PJ_CONFIG_IPHONE             1
-#define PJMEDIA_HAS_VIDEO            1
-#define PJMEDIA_HAS_VID_TOOLBOX_CODEC 1
