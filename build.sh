@@ -29,6 +29,8 @@ OPENSSL_URL="https://raw.githubusercontent.com/keeshux/openssl-apple/master/buil
 OPENSSL_DIR=${BUILD_DIR}/openssl
 OPENSSL_SH=${OPENSSL_DIR}/`basename ${OPENSSL_URL}`
 
+OPUS_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/opuslib/Opus-iOS/dependencies"
+
 copy_libs () {
     DST=${1}
 
@@ -254,10 +256,10 @@ fi
 
 if [ ! -f "${OPENSSL_DIR}/lib/libssl.a" ]; then
     pushd . > /dev/null
-    #cd ${OPENSSL_DIR}
-    #sh ${OPENSSL_SH} --version=1.1.1h
-    #mkdir "${OPENSSL_DIR}/include/openssl"
-    #mv ${OPENSSL_DIR}/include/*.h ${OPENSSL_DIR}/include/openssl
+#    cd ${OPENSSL_DIR}
+#    sh ${OPENSSL_SH} --version=1.1.1h
+#    mkdir "${OPENSSL_DIR}/include/openssl"
+#    mv ${OPENSSL_DIR}/include/*.h ${OPENSSL_DIR}/include/openssl
     popd > /dev/null
 fi
 
@@ -292,7 +294,7 @@ export LDFLAGS="-L${OPENSSL_DIR}/lib ${OPTIMIZE_FLAG} ${DEBUG_FLAG}"
 
 echo ${OPENSSL_DIR}
 
-configure="./configure-iphone --with-ssl=${OPENSSL_DIR}"
+configure="./configure-iphone --with-ssl=${OPENSSL_DIR} --with-vpx --with-opus=${OPUS_DIR}"
 #configure="./configure-iphone --with-ssl=${OPENSSL_DIR}"
 
 
@@ -306,7 +308,7 @@ function _build() {
   echo "Building for ${ARCH}..."
 
   make distclean > ${LOG} 2>&1
-  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} >> ${LOG} 2>&1
+  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} --with-vpx --with-opus=${OPUS_DIR} >> ${LOG} 2>&1
   # ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} >> ${LOG} 2>&1
   make dep >> ${LOG} 2>&1
   make clean >> ${LOG}
