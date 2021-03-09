@@ -2,7 +2,7 @@
  * PJLIB settings.
  */
 
-#define PJ_IPHONE_OS_HAS_MULTITASKING_SUPPORT	0
+#define PJ_IPHONE_OS_HAS_MULTITASKING_SUPPORT	1
 
 /* Both armv6 and armv7 has FP hardware support.
  * See https://trac.pjsip.org/repos/ticket/1589 for more info
@@ -35,7 +35,9 @@
 /* Video */
 #define PJMEDIA_HAS_VIDEO			1
 #define PJMEDIA_HAS_VID_TOOLBOX_CODEC 1
-//#define PJMEDIA_HAS_VPX_CODEC_VP9 1
+#define PJMEDIA_HAS_VPX_CODEC_VP9 1
+//#define PJMEDIA_HAS_OPENH264_CODEC 1
+#define PJMEDIA_HAS_VPX_CODEC_VP8 1
 /*
  * PJSIP settings.
  */
