@@ -31,7 +31,8 @@ OPENSSL_SH=${OPENSSL_DIR}/`basename ${OPENSSL_URL}`
 
 OPUS_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/opuslib/Opus-iOS/dependencies"
 
-VPX_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/VPX"
+VPX_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/libvpx"
+#OPEN264_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/lib"
 
 copy_libs () {
     DST=${1}
@@ -98,7 +99,7 @@ copy_libs () {
     cp third_party/lib/libsrtp-${DST}-apple-darwin_ios.a third_party/lib-${DST}/libsrtp-${DST}-apple-darwin_ios.a
     cp third_party/lib/libyuv-${DST}-apple-darwin_ios.a third_party/lib-${DST}/libyuv-${DST}-apple-darwin_ios.a
     cp third_party/lib/libwebrtc-${DST}-apple-darwin_ios.a third_party/lib-${DST}/libwebrtc-${DST}-apple-darwin_ios.a
-    cp third_party/lib/libvpx.a third_party/lib-${DST}/libvpc-${DST}-apple-darwin_ios.a
+#    cp third_party/lib/libvpx.a third_party/lib-${DST}/libvpc-${DST}-apple-darwin_ios.a
 }
 
 lipo_libs () {
@@ -255,8 +256,8 @@ export LDFLAGS="-L${OPENSSL_DIR}/lib ${OPTIMIZE_FLAG} ${DEBUG_FLAG}"
 
 echo ${OPENSSL_DIR}
 
-configure="./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR}"
-# --with-vpx=${VPX_DIR}
+configure="./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-vpx=${VPX_DIR}"
+#--with-vpx=${VPX_DIR} --with-openh264=${OPEN264_DIR}
 # configure="./configure-iphone --with-ssl=${OPENSSL_DIR}"
 
 
@@ -270,8 +271,8 @@ function _build() {
   echo "Building for ${ARCH}..."
 
   make distclean > ${LOG} 2>&1
-  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} >> ${LOG} 2>&1
-  # --with-vpx=${VPX_DIR}
+  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-vpx=${VPX_DIR} >> ${LOG} 2>&1
+#     --with-vpx=${VPX_DIR} --with-openh264=${OPEN264_DIR}
   # ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} >> ${LOG} 2>&1
   make dep >> ${LOG} 2>&1
   make clean >> ${LOG}
