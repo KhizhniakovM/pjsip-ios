@@ -31,8 +31,8 @@ OPENSSL_SH=${OPENSSL_DIR}/`basename ${OPENSSL_URL}`
 
 OPUS_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/opuslib/Opus-iOS/dependencies"
 
-VPX_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/libvpx"
-#OPEN264_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/lib"
+VPX_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/build"
+OPEN264_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/open264/h264"
 
 copy_libs () {
     DST=${1}
@@ -256,7 +256,7 @@ export LDFLAGS="-L${OPENSSL_DIR}/lib ${OPTIMIZE_FLAG} ${DEBUG_FLAG}"
 
 echo ${OPENSSL_DIR}
 
-configure="./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-vpx=${VPX_DIR}"
+configure="./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-openh264=${OPEN264_DIR} --with-vpx=${VPX_DIR}"
 #--with-vpx=${VPX_DIR} --with-openh264=${OPEN264_DIR}
 # configure="./configure-iphone --with-ssl=${OPENSSL_DIR}"
 
@@ -271,7 +271,7 @@ function _build() {
   echo "Building for ${ARCH}..."
 
   make distclean > ${LOG} 2>&1
-  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-vpx=${VPX_DIR} >> ${LOG} 2>&1
+  ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} --with-opus=${OPUS_DIR} --with-openh264=${OPEN264_DIR} --with-vpx=${VPX_DIR} >> ${LOG} 2>&1
 #     --with-vpx=${VPX_DIR} --with-openh264=${OPEN264_DIR}
   # ARCH="-arch ${ARCH}" ./configure-iphone --with-ssl=${OPENSSL_DIR} >> ${LOG} 2>&1
   make dep >> ${LOG} 2>&1
