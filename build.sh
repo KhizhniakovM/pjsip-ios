@@ -32,7 +32,7 @@ OPENSSL_SH=${OPENSSL_DIR}/`basename ${OPENSSL_URL}`
 OPUS_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/opuslib/Opus-iOS/dependencies"
 
 VPX_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/libvpx/build"
-OPEN264_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/open264/h264"
+OPEN264_DIR="/Users/maxkhizhniakov/Desktop/Work/GLAZZAR/open264/pjsip/external/h264"
 
 copy_libs () {
     DST=${1}
